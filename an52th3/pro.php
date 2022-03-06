@@ -1,0 +1,13 @@
+<?php
+    session_start();
+    $str="23456789abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMOPQRSTUBWXYZ";
+    $code="";
+    $code=$str[rand(0,strlen($str)-1)].$str[rand(0,strlen($str)-1)].$str[rand(0,strlen($str)-1)].$str[rand(0,strlen($str)-1)];
+    $image=imagecreate(100,30);
+    $bcolor=imagecolorallocate($image,200,200,200);
+    imagefill($image,0,0,$bcolor);
+    $fontcolor=imagecolorallocate($image,200,0,0);
+    imagestring($image,300,35,5,$code,$fontcolor);
+    $_SESSION["piccode"]=$code;
+    imagepng($image);
+?>
